@@ -24,7 +24,16 @@ class Heap():
         temp = self.lst[1]
         self.lst[1] = self.lst[i]
         self.lst[i] = temp
-
+    def HeapDelete(self,i):
+        if i>self.heapSize:
+            return "index out of range"
+        if i == self.heapSize:
+            self.heapSize -= 1
+            return
+        print("key is: ",self.lst[i])
+        self.lst[i] = self.lst[self.heapSize]
+        self.heapSize -= 1
+        self.Heap(i)
     def miusHeapSize(self):
         self.heapSize -= 1
     def getList(self):
@@ -49,6 +58,7 @@ class MinHeap(Heap):
             self.lst[i] = self.lst[smallest]
             self.lst[smallest] = temp
             self.Heap(smallest)
+
     # following functions are for priority queues
     def HeapMinimum(self):
         return self.lst[1]
@@ -90,6 +100,7 @@ class MaxHeap(Heap):
             self.lst[i] = self.lst[largest]
             self.lst[largest] = temp
             self.Heap(largest)
+
     # following functions are for priority queues
     def HeapMaximum(self):
         return self.lst[1]

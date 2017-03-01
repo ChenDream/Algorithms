@@ -22,11 +22,15 @@ if __name__ == "__main__":
     # HeapSort(f)
     # print(f)
 
-    maxheap = MaxHeap(b)
+    maxheap = MaxHeap(c)
     maxheap.BuildHeap()
+
     print(maxheap)
+
     # while maxheap.heapSize>0:
     #     print(maxheap.HeapExtractMax())
     #     maxheap.printLst()
     maxheap.MaxHeapInsert(10)
+    maxheap.printLst()
+    maxheap.HeapDelete(3)
     maxheap.printLst()

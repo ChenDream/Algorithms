@@ -1,5 +1,7 @@
 
 from Heap import MinHeap,MaxHeap
+#implement first-in first-out with priority queue
+#implement stack with priority queue
 
 # class PriorityQueues():
 
