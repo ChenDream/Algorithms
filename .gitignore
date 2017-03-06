@@ -49,3 +49,5 @@ Temporary Items
 .idea/vcs.xml
 .idea/workspace.xml
 __pycache__/Heap.cpython-36.pyc
+
+*.pyc
