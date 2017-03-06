@@ -1,5 +1,5 @@
-import sys
-from Heap import MaxHeap,MinHeap
+from SortingAndOrderStatistics.Heap import MaxHeap
+
 
 def HeapSort(lst):
     maxheap = MaxHeap(lst)
