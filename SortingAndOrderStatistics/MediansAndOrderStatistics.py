@@ -1,4 +1,4 @@
-import random
+from SortingAndOrderStatistics.QuickSort import RandomizedQuickSort
 
 
 def minimum(lst):
@@ -15,20 +15,13 @@ def maximum(lst):
             max = lst[i]
     return max
 
-#randomized partition from quick sort
-# def randomizedPartition(lst,p,r):
-#     i = random.randint(p,r)
-#     temp = lst[r]
-#     lst[r] = lst[i]
-#     lst[i] = temp
-#
-#     return partition(p,r)
-
 # randomized select return i th smallest element of array[p...r]
 def randomizedSelect(lst,p,r,i):
+
     if p == r:
         return lst[p]
-    q = randomizedPartition(lst,p,r)
+    qs = RandomizedQuickSort(lst)
+    q = qs.randomizedPartition(p,r)
     k = q-p+1
     if i == k:
         return lst[q]
@@ -40,4 +33,4 @@ if __name__ == "__main__":
     c = [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1, 34, 29, 100, 492, 43, 21, 3, 494, 99]
     # print(minimum(c))
     # print(maximum(c))
-    print(randomizedSelect(c,0,5,1))
+    print(randomizedSelect(c,0,5,2))
