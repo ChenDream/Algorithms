@@ -1,15 +1,18 @@
 
 # stack implements a last-in,first-out or LIFO
 
+
 class Stack():
     def __init__(self):
         # the index of list start at 0 not 1
         self.top = -1
         self.lst = []
+
     def empty(self):
         if self.top == -1:
             return True
         return False
+
     def push(self,x):
         self.top +=1
         try:
