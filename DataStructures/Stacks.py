@@ -1,12 +1,12 @@
 
 # stack implements a last-in,first-out or LIFO
 
-
+MAXSIZE = 10
 class Stack():
     def __init__(self):
         # the index of list start at 0 not 1
         self.top = -1
-        self.lst = []
+        self.lst = [0]*MAXSIZE
 
     def empty(self):
         if self.top == -1:
@@ -14,15 +14,21 @@ class Stack():
         return False
 
     def push(self,x):
-        self.top +=1
-        try:
+        # list without maxsize
+        # try:
+        #     self.lst[self.top] = x
+        # except IndexError:
+        #     self.lst.append(x)
+        if self.top+1 >= MAXSIZE:
+            print("push",x,"overflow")
+            return
+        else:
+            self.top += 1
             self.lst[self.top] = x
-        except IndexError:
-            self.lst.append(x)
-
     def pop(self):
         if self.empty():
-            return "underflow"
+            print("pop","underflow")
+            return
         else:
             self.top -= 1
             return self.lst[self.top+1]
@@ -40,6 +46,10 @@ if __name__ == "__main__":
     stack.push(9)
     stack.push(10)
     stack.push(11)
+    stack.push(12)
+    stack.push(13)
+    stack.push(14)
+    stack.push(15)
     print(stack.pop())
     print(stack.pop())
     print(stack.pop())
