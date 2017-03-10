@@ -3,10 +3,11 @@
 
 MAXSIZE = 10
 class Stack():
-    def __init__(self):
+    def __init__(self,size):
         # the index of list start at 0 not 1
+        self.size = size
         self.top = -1
-        self.lst = [0]*MAXSIZE
+        self.lst = [0]*self.size
 
     def empty(self):
         if self.top == -1:
@@ -19,7 +20,7 @@ class Stack():
         #     self.lst[self.top] = x
         # except IndexError:
         #     self.lst.append(x)
-        if self.top+1 >= MAXSIZE:
+        if self.top+1 >= self.size:
             print("push",x,"overflow")
             return
         else:
@@ -31,10 +32,12 @@ class Stack():
             return
         else:
             self.top -= 1
+            print(self.lst[self.top+1])
             return self.lst[self.top+1]
 
+
 if __name__ == "__main__":
-    stack = Stack()
+    stack = Stack(10)
     stack.push(3)
     stack.push(4)
     print(stack.pop())
