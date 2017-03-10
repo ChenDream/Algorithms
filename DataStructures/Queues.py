@@ -41,6 +41,8 @@ class Queue():
         if self.head == self.tail and self.count == 0:
             return True
         return  False
+    def getCount(self):
+        return self.count
 # Deque is  double end queue allows insertion and deletion at
 # both end
 class Deque():
@@ -102,7 +104,8 @@ class Deque():
         else:
             self.head +=1
         return x
-
+    def getCount(self):
+        return self.count
 # implement queues with two stacks
 # enqueue push x in to stack_enqueue
 # dequeue: if  stack_dequeue is empty,pop everything from stack_enqueue to stack_dequeue
@@ -119,11 +122,10 @@ class Queue_s():
 
     def dequeue(self):
         if self.stack_dequeue.empty():
-            while self.stack_enqueue.empty() is not False:
-            # for i in range(self.size):
+            while not self.stack_enqueue.empty():
                 self.stack_dequeue.push(self.stack_enqueue.pop())
 
-        self.stack_dequeue.pop()
+        return self.stack_dequeue.pop()
 if __name__ == "__main__":
 
     # queues = Queue(10)
@@ -144,8 +146,9 @@ if __name__ == "__main__":
     queue_s = Queue_s(10)
     for i in range(11):
         queue_s.enqueue(i)
-
-    queue_s.dequeue()
-    # for i in range(11):
-    #     queue_s.dequeue()
+    print(queue_s.dequeue())
+    for i in range(10,21):
+        queue_s.enqueue(i)
+    for i in range(21):
+        print(queue_s.dequeue())
 

@@ -1,5 +1,6 @@
 
 from SortingAndOrderStatistics.Heap import MaxHeap
+from DataStructures.Queues import Queue
 #implement first-in first-out with priority queue
 #implement stack with priority queue
 
