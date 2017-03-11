@@ -37,6 +37,8 @@ if __name__ == "__main__":
         i = random.randint(1,100)
         lst.append(i)
         pq.push(i)
+
     for i in range(15):
         print(pq.pop())
     print(lst)
+

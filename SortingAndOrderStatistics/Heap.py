@@ -1,4 +1,4 @@
-import sys
+import sys,random
 
 class Heap():
     def __init__(self,lst):
@@ -46,12 +46,11 @@ class MinHeap(Heap):
     def Heap(self,i):
         left =self.Left(i)
         right = self.Right(i)
-
-        if left < self.heapSize and self.lst[left]<self.lst[i]:
+        if left <= self.heapSize and self.lst[left]<self.lst[i]:
             smallest = left
         else:
             smallest = i
-        if right< self.heapSize and self.lst[right]<self.lst[smallest]:
+        if right<= self.heapSize and self.lst[right]<self.lst[smallest]:
             smallest = right
         if smallest!=i:
             temp = self.lst[i]
@@ -65,14 +64,17 @@ class MinHeap(Heap):
     def HeapExtractMin(self):
         if self.heapSize <1:
             return "heap underflow"
+
         min = self.lst[1]
         self.lst[1] = self.lst[self.heapSize]
         self.heapSize -=1
         self.Heap(1)
+
         return min
     def HeapIncreaseKey(self,i,key):
         if key >self.lst[i]:
-            return "new key is larger than current key"
+            print("new key is larger than current key")
+            return
         self.lst[i] = key
         while i>1 and self.lst[self.Parent(i)]>self.lst[i]:
             parentIndex = self.Parent(i)
@@ -80,9 +82,10 @@ class MinHeap(Heap):
             self.lst[i] = self.lst[parentIndex]
             self.lst[parentIndex] = temp
             i =  parentIndex
+
     def MinHeapInsert(self,key):
         self.heapSize +=1
-        self.lst.append(-sys.maxsize)
+        self.lst.append(sys.maxsize)
         self.HeapIncreaseKey(self.heapSize,key)
 class MaxHeap(Heap):
     def Heap(self,i):
@@ -127,3 +130,16 @@ class MaxHeap(Heap):
         # self.lst[self.heapSize] = -sys.maxsize
         self.lst.append(-sys.maxsize)
         self.HeapIncreaseKey(self.heapSize,key)
+
+if __name__ == "__main__":
+
+    minheap = MinHeap([])
+    a = []
+    for i in range(15):
+        minheap.MinHeapInsert(random.randint(1,100))
+    print()
+    for i in range(15):
+        a.append(minheap.HeapExtractMin())
+        # print(minheap.HeapExtractMin())
+    print(a)
+
