@@ -1,7 +1,7 @@
+from DataStructures.LinkedList import SingleLinkList
 
 # stack implements a last-in,first-out or LIFO
 
-MAXSIZE = 10
 class Stack():
     def __init__(self,size):
         # the index of list start at 0 not 1
@@ -35,6 +35,7 @@ class Stack():
             # print(self.lst[self.top+1])
             return self.lst[self.top+1]
 
+# this queue class is used by implementing stack with 2 queue
 class Queue():
     def __init__(self,size):
         self.size = size
@@ -108,7 +109,19 @@ class Stack_q():
             return self.queue2.dequeue()
 
 
+# implement a stack using a singly linked list
+class Stack_LinkList:
+    def __init__(self,size):
+        self.size = size
 
+    def empty(self):
+        return
+
+    def push(self,x):
+        return
+
+    def pop(self):
+        return
 
 if __name__ == "__main__":
     stack_q = Stack_q(10)
