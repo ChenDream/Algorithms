@@ -66,7 +66,7 @@ class CircularDoubleList:
 class SingleLinkList:
     def __init__(self):
         self.head = None
-
+        self.end = None
     def search(self,key):
         x = self.head
         while x != None and x.key != key:
@@ -74,15 +74,26 @@ class SingleLinkList:
         return x
 
     def insert(self,x):
+        if self.end == None:
+            self.end = x
         x.next = self.head
         self.head = x
 
     def delete(self,x):
-        y = self.head
-        while y.next != x:
-            y = y.next
-        y.next = x.next
+        if self.head == x:
+            self.head = x.next
+            return
+        x = x.next
 
+
+    def empty(self):
+        if self.head == None:
+            return True
+        return False
+
+    def reverse(self):
+
+        return
 
 if __name__ == "__main__":
 
@@ -105,18 +116,30 @@ if __name__ == "__main__":
     #     x = x.next
 
     singlelist = SingleLinkList()
+
+    # singlelist.insert(LinkNode(1))
+    # singlelist.insert(LinkNode(2))
+    # x = singlelist.head
+    # print(singlelist.empty())
+    # singlelist.delete(x)
+    # print(singlelist.empty())
+
+
     for i in range(13):
         singlelist.insert(LinkNode(i))
 
     x = singlelist.search(9)
     print(x.key)
-
+    y = singlelist.search(8)
+    print(y.key)
     singlelist.delete(x)
+    singlelist.delete(y)
     x = singlelist.head
 
     while x!= None:
         print(x.key)
         x = x.next
+
 
 
 

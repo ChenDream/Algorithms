@@ -1,8 +1,8 @@
-from DataStructures.LinkedList import SingleLinkList
+from DataStructures.LinkedList import SingleLinkList,LinkNode
+
 
 # stack implements a last-in,first-out or LIFO
-
-class Stack():
+class Stack:
     def __init__(self,size):
         # the index of list start at 0 not 1
         self.size = size
@@ -26,6 +26,7 @@ class Stack():
         else:
             self.top += 1
             self.lst[self.top] = x
+
     def pop(self):
         if self.empty():
             print("pop","underflow")
@@ -45,6 +46,7 @@ class Queue():
         # count available elements on the list
         # also used for check overflows and underflows
         self.count = 0
+
     def enqueue(self,x):
         if self.count == self.size:
             print("enqueue",x,"overflows")
@@ -56,6 +58,7 @@ class Queue():
             self.tail = 0
         else:
             self.tail = self.tail + 1
+
     def dequeue(self):
         if self.count == 0:
             print("dequeue underflows")
@@ -68,9 +71,11 @@ class Queue():
             self.head +=1
         return x
     def isEmpty(self):
+
         if self.head == self.tail and self.count == 0:
             return True
-        return  False
+        return False
+
     def getCount(self):
         return self.count
 
@@ -81,6 +86,7 @@ class Stack_q():
         self.queue1 = Queue(self.size)
         self.queue2 = Queue(self.size)
         self.size = 0
+
     def push(self,x):
         if self.queue1.isEmpty() and self.queue2.isEmpty():
             self.queue1.enqueue(x)
@@ -91,6 +97,7 @@ class Stack_q():
         if not self.queue2.isEmpty():
             self.queue2.enqueue(x)
             return
+
     def pop(self):
         if self.queue1.isEmpty() and self.queue2.isEmpty():
             print("stack underflow")
@@ -113,23 +120,43 @@ class Stack_q():
 class Stack_LinkList:
     def __init__(self,size):
         self.size = size
+        self.count = 0
+        self.linklist = SingleLinkList()
 
     def empty(self):
-        return
+        return self.linklist.empty()
 
     def push(self,x):
-        return
+        if self.count == self.size:
+            print("stack overflow")
+            return
+        self.count +=1
+        node = LinkNode(x)
+        self.linklist.insert(node)
 
     def pop(self):
-        return
+        if self.count == 0:
+            print("stack underflow")
+            return
+        x = self.linklist.head
+        self.linklist.delete(self.linklist.head)
+        self.count -=1
+        return x.key
 
 if __name__ == "__main__":
-    stack_q = Stack_q(10)
-    for i in range(11):
-        stack_q.push(i)
+    stack_l = Stack_LinkList(10)
+    for i in range(12):
+        stack_l.push(i)
+    for i in range(12):
+        print(stack_l.pop())
 
-    for i in range(11):
-        print(stack_q.pop())
+
+    # stack_q = Stack_q(10)
+    # for i in range(11):
+    #     stack_q.push(i)
+    #
+    # for i in range(11):
+    #     print(stack_q.pop())
 
     # stack = Stack(10)
     # stack.push(3)

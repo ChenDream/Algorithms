@@ -1,9 +1,9 @@
 from DataStructures.Stacks import Stack
+from DataStructures.LinkedList import LinkNode
 # queues implements a first-in,first-out or FIFO
 # the queue has a head and a tail
 
 #queues with fixed size
-MAX_SIZE = 10
 class Queue():
     def __init__(self,size):
         self.size = size
@@ -126,7 +126,45 @@ class Queue_s():
                 self.stack_dequeue.push(self.stack_enqueue.pop())
 
         return self.stack_dequeue.pop()
+
+
+# implement a queue by a singly linked list
+class Queue_LinkList:
+    def __init__(self,size):
+        self.size = size
+        self.tail = None
+        self.head = None
+        self.count = 0
+
+    def enqueue(self,x):
+        if self.count == self.size:
+            print("queue overflow")
+            return
+        node = LinkNode(x)
+        if self.count == 0:
+            self.tail = node
+            self.head = node
+        else:
+            self.tail.next = node
+            self.tail = node
+        self.count += 1
+
+    def dequeue(self):
+        if self.count == 0:
+            print("queue underflow")
+            return
+        x = self.head
+        self.head = self.head.next
+        self.count -=1
+        return x.key
+
 if __name__ == "__main__":
+    queue_list = Queue_LinkList(10)
+    for i in range(11):
+        queue_list.enqueue(i)
+    for i in range(12):
+        print(queue_list.dequeue())
+
 
     # queues = Queue(10)
     # for i in range(11):
@@ -143,12 +181,12 @@ if __name__ == "__main__":
     #     print(deque.dequeue_front())
     #     print(deque.dequeue_end())
 
-    queue_s = Queue_s(10)
-    for i in range(11):
-        queue_s.enqueue(i)
-    print(queue_s.dequeue())
-    for i in range(10,21):
-        queue_s.enqueue(i)
-    for i in range(21):
-        print(queue_s.dequeue())
+    # queue_s = Queue_s(10)
+    # for i in range(11):
+    #     queue_s.enqueue(i)
+    # print(queue_s.dequeue())
+    # for i in range(10,21):
+    #     queue_s.enqueue(i)
+    # for i in range(21):
+    #     print(queue_s.dequeue())
 
