@@ -83,7 +83,10 @@ class SingleLinkList:
         if self.head == x:
             self.head = x.next
             return
-        x = x.next
+        y = self.head
+        while y.next != x:
+            y = y.next
+        y.next = x.next
 
 
     def empty(self):
@@ -92,8 +95,21 @@ class SingleLinkList:
         return False
 
     def reverse(self):
+        x = self.head
+        if x.next == None:
+            return
 
-        return
+        y = x.next
+        x.next = None
+        while y != None:
+            temp = y.next
+            y.next = x
+            x = y
+            y = temp
+        self.head = x
+
+
+
 
 if __name__ == "__main__":
 
@@ -102,7 +118,11 @@ if __name__ == "__main__":
     #     doublelist.insert(DoubleLinkNode(i))
     #
     # x = doublelist.search(8)
-    # print(x.key)
+    # doublelist.delete(x)
+    # y = doublelist.head
+    # while y!= None:
+    #     print(y.key)
+    #     y = y.next
 
     # circulardoublelist = CircularDoubleList()
     # for i in range(13):
@@ -118,7 +138,7 @@ if __name__ == "__main__":
     singlelist = SingleLinkList()
 
     # singlelist.insert(LinkNode(1))
-    # singlelist.insert(LinkNode(2))
+
     # x = singlelist.head
     # print(singlelist.empty())
     # singlelist.delete(x)
@@ -129,16 +149,18 @@ if __name__ == "__main__":
         singlelist.insert(LinkNode(i))
 
     x = singlelist.search(9)
-    print(x.key)
     y = singlelist.search(8)
-    print(y.key)
+
     singlelist.delete(x)
     singlelist.delete(y)
-    x = singlelist.head
 
-    while x!= None:
-        print(x.key)
-        x = x.next
+    singlelist.reverse()
+    z = singlelist.head
+
+
+    while z!= None:
+        print(z.key)
+        z = z.next
 
 
 
