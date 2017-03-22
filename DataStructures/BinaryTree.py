@@ -37,8 +37,10 @@ class BinaryTree:
     def getNodes(self,type="r"):
         if type == "r":
             self.printAllNode_recursive(self.root)
-        else:
+        elif type == "n1":
             self.printAllNode_Nonrecursive()
+        else:
+            self.printAllNode_Nonrecursive_2()
 
     def printAllNode_recursive(self,node):
         if node == None:
@@ -62,9 +64,22 @@ class BinaryTree:
                 stack.push(node.right)
     # no more than constance extra space, no modify tree
     def printAllNode_Nonrecursive_2(self):
+        # need to fix some logic error
+        # current,before = self.root,None
+        # if current == None:
+        #     return
+        # while current != None:
+        #     print(current.key)
+        #     if current.left == None and current.right == None:
+        #         current,before = current.parent,current
+        #     else:
+        #         if before == current.left:
+        #             current,before = current.right,current
+        #         if before == current.right:
+        #             current,before = current.parent,current
+        #         if before == current.parent:
+        #             current,before = current.left,current
         return
-
-
 # unbounded branch tree is a tree with unlimited children
 class UnboundedBranchTree:
     def __init__(self):
@@ -110,13 +125,13 @@ class UnboundedBranchTree:
         self.printAllNode_recursive(node.right)
 
 if __name__ == "__main__":
-    # bt = BinaryTree()
-    # for i in range(13):
-    #     bt.randomInsert(i)
-    # bt.getNodes("n")
-
-    tree = UnboundedBranchTree()
+    bt = BinaryTree()
     for i in range(13):
-        tree.randomInsert(i)
-    tree.getNodes()
+        bt.randomInsert(i)
+    bt.getNodes("n1")
+
+    # tree = UnboundedBranchTree()
+    # for i in range(13):
+    #     tree.randomInsert(i)
+    # tree.getNodes()
 
